@@ -1,0 +1,1493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nirvana — Graphic Era Hill University TechFest</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Flask Static CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='hero.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="nirvana-nav">
+
+        <!-- Logo -->
+        <a href="#home" class="nirvana-logo">
+
+            <span class="logo-mark">N</span>
+
+            <span class="logo-text">
+                NIRVANA
+                <small>TECH FEST 2026</small>
+            </span>
+
+        </a>
+
+
+        <!-- Navigation -->
+        <div class="nirvana-nav-links">
+
+            <a href="#home" class="nav-link active">
+                <span>01</span>
+                Home
+            </a>
+
+            <a href="#events" class="nav-link">
+                <span>02</span>
+                Events
+            </a>
+
+            <a href="#schedule" class="nav-link">
+                <span>03</span>
+                Schedule
+            </a>
+
+            <a href="#register" class="nav-link">
+                <span>04</span>
+                Guide
+            </a>
+
+            <a href="#faq" class="nav-link">
+                <span>05</span>
+                FAQ
+            </a>
+
+        </div>
+
+
+        <!-- Right Side -->
+        <div class="nirvana-nav-right">
+
+            <div class="nav-status">
+                <span class="status-dot"></span>
+                LIVE
+            </div>
+
+            <a href="{{ url_for('form') }}" class="nav-register">
+                <span>Register</span>
+                <i>↗</i>
+            </a>
+
+        </div>
+
+
+        <!-- Mobile Menu -->
+        <button class="nirvana-menu" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN 3D HERO
+    ====================================================== -->
+
+    <section class="nirvana-hero" id="home">
+
+        <!-- 3D Background -->
+        <div class="nirvana-scene">
+
+            <div class="grid-floor"></div>
+
+            <div class="portal">
+
+                <div class="portal-ring ring-1"></div>
+                <div class="portal-ring ring-2"></div>
+                <div class="portal-ring ring-3"></div>
+
+                <div class="portal-core">
+                    <span>N</span>
+                </div>
+
+                <div class="energy energy-1"></div>
+                <div class="energy energy-2"></div>
+                <div class="energy energy-3"></div>
+
+            </div>
+
+
+            <!-- Particles -->
+            <div class="particles">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+
+            <p class="hero-small">
+                TECH • INNOVATION • FUTURE
+            </p>
+
+            <h1>
+     
+                <span>NIRVANA</span>
+            </h1>
+
+            <p class="hero-description">
+                Where technology meets imagination,
+                innovation becomes reality.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="#events" class="hero-btn primary-btn">
+                    Explore Events
+                </a>
+
+                <a href="{{ url_for('form') }}" class="hero-btn secondary-btn">
+                    Register Now
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span></span>
+            SCROLL TO ENTER
+        </div>
+ </section>
+   
+
+
+    <!-- =====================================================
+         AMBIENT BACKGROUND
+    ====================================================== -->
+
+    <div id="stars"></div>
+
+    <div id="aurora" aria-hidden="true"></div>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main id="top">
+
+
+        <!-- =================================================
+             SECOND HERO / EVENT INTRO
+        ================================================== -->
+
+        <section class="hero">
+
+            <div id="hero-3d"
+                class="hero-3d"
+                aria-hidden="true">
+            </div>
+
+
+            <p class="eyebrow">
+                <span>OCT 14–16, 2026</span>
+                · GRAPHIC ERA HILL UNIVERSITY
+            </p>
+
+
+            <!-- Countdown -->
+            <div class="countdown" id="countdown">
+
+                <div class="unit">
+                    <span class="num" id="cd-days">--</span>
+                    <span class="label">Days</span>
+                </div>
+
+                <span class="sep">:</span>
+
+                <div class="unit">
+                    <span class="num" id="cd-hours">--</span>
+                    <span class="label">Hrs</span>
+                </div>
+
+                <span class="sep">:</span>
+
+                <div class="unit">
+                    <span class="num" id="cd-mins">--</span>
+                    <span class="label">Min</span>
+                </div>
+
+                <span class="sep">:</span>
+
+                <div class="unit">
+                    <span class="num" id="cd-secs">--</span>
+                    <span class="label">Sec</span>
+                </div>
+
+            </div>
+
+
+            <!-- CTA -->
+            <div class="cta-row">
+
+                <a href="{{ url_for('form') }}" class="btn btn-ghost" >
+                    Register your crew →
+                </a>
+
+                <a href="#events" class="btn btn-ghost">
+                    Explore events
+                </a>
+
+            </div>
+
+
+            <!-- =================================================
+                 IMAGE CAROUSEL
+            ================================================== -->
+
+            <div class="carousel">
+
+                <div class="group">
+
+
+                    <!-- Image 1 -->
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='12.JPG') }}"
+                            alt="Nirvana Tech Fest event">
+                    </div>
+
+
+                    <!-- Image 2 -->
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 2.jpeg') }}"
+                            alt="Nirvana event">
+                    </div>
+
+
+                    <!-- Image 3 -->
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 3.jpeg') }}"
+                            alt="Technology event">
+                    </div>
+
+
+                    <!-- Image 4 -->
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 4.jpeg') }}"
+                            alt="Tech fest">
+                    </div>
+
+
+                    <!-- Image 5 -->
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 5.jpeg') }}"
+                            alt="Nirvana fest">
+                    </div>
+
+
+                    <!-- Image 6 -->
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 6.jpeg') }}"
+                            alt="Innovation event">
+                    </div>
+
+
+                    <!-- Duplicate set for infinite carousel -->
+
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='12.JPG') }}"
+                            alt="Nirvana Tech Fest event">
+                    </div>
+
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 2.jpeg') }}"
+                            alt="Nirvana event">
+                    </div>
+
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 3.jpeg') }}"
+                            alt="Technology event">
+                    </div>
+
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 4.jpeg') }}"
+                            alt="Tech fest">
+                    </div>
+
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 5.jpeg') }}"
+                            alt="Nirvana fest">
+                    </div>
+
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='image 6.jpeg') }}"
+                            alt="Innovation event">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EVENTS
+        ================================================== -->
+
+        <section id="events" class="section-pad">
+
+            <div class="wrap">
+
+                <div class="section-head reveal">
+
+                    <p class="eyebrow">
+                        Event Arena
+                    </p>
+
+                    <h2>
+                        Pick your opportunity,
+                        then pick your fight.
+                    </h2>
+
+                    <p>
+                        Every event lists its own format up front —
+                        team size, duration, and level —
+                        so you know exactly what you're signing up for.
+                    </p>
+
+                </div>
+
+
+                <!-- Filters -->
+                <div class="filter-row reveal">
+
+                    <button class="filter-btn active"
+                        data-filter="all">
+                        All events
+                    </button>
+
+                    <button class="filter-btn"
+                        data-filter="core">
+                        Core
+                    </button>
+
+                    <button class="filter-btn"
+                        data-filter="signal">
+                        Signal
+                    </button>
+
+                    <button class="filter-btn"
+                        data-filter="relay">
+                        Relay
+                    </button>
+
+                </div>
+
+
+                <!-- Event Orbit -->
+                <div class="event-orbit reveal"
+                    id="eventOrbit">
+
+
+                    <!-- Center -->
+                    <div class="orbit-center">
+
+                        <span>TECH</span>
+
+                        <strong>NIRVANA</strong>
+
+                        <small>2026</small>
+
+                    </div>
+
+
+                    <div class="orbit-ring"></div>
+
+
+                    <!-- Cards -->
+                    <div class="cards-orbit"
+                        id="cardsOrbit">
+
+
+                        <!-- Hackathon -->
+                        <article class="event-card"
+                            data-filter="core">
+
+                            <span class="tag"></span>
+
+                            <h3>
+                                HACKATHON
+                            </h3>
+
+                            <p>
+                                Build, code, collaborate and compete.
+                            </p>
+
+                            <div class="meta">
+                                <span>Team of 4</span>
+                                <span>24 hrs</span>
+                            </div>
+
+                            <a href="{{ url_for('form') }}"
+                                class="register-btn">
+
+                                <span>
+                                    Register Now
+                                </span>
+
+                                <i>↗</i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- Treasure Hunt -->
+                        <article class="event-card"
+                            data-filter="relay">
+
+                            <span class="tag"></span>
+
+                            <h3>
+                                TREASURE HUNT
+                            </h3>
+
+                            <p>
+                                Follow clues and solve challenges.
+                            </p>
+
+                            <div class="meta">
+                                <span>Team of 3</span>
+                                <span>6 hrs</span>
+                            </div>
+
+                            <a href="{{ url_for('form') }}"
+                                class="register-btn">
+
+                                <span>
+                                    Register Now
+                                </span>
+
+                                <i>↗</i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- E Sport -->
+                        <article class="event-card"
+                            data-filter="signal">
+
+                            <span class="tag"></span>
+
+                            <h3>
+                                E SPORT
+                            </h3>
+
+                            <p>
+                                Compete with gamers and climb
+                                the leaderboard.
+                            </p>
+
+                            <div class="meta">
+                                <span>Solo</span>
+                                <span>3 hrs</span>
+                            </div>
+
+                            <a href="{{ url_for('form') }}"
+                                class="register-btn">
+
+                                <span>
+                                    Register Now
+                                </span>
+
+                                <i>↗</i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- CTF -->
+                        <article class="event-card"
+                            data-filter="signal">
+
+                            <span class="tag"></span>
+
+                            <h3>
+                                CTF
+                            </h3>
+
+                            <p>
+                                Test your cybersecurity skills.
+                            </p>
+
+                            <div class="meta">
+                                <span>Team of 2</span>
+                                <span>8 hrs</span>
+                            </div>
+
+                            <a href="{{ url_for('form') }}"
+                                class="register-btn">
+
+                                <span>
+                                    Register Now
+                                </span>
+
+                                <i>↗</i>
+
+                            </a>
+
+                        </article>
+
+
+                        <!-- Workshop -->
+                        <article class="event-card"
+                            data-filter="core">
+
+                            <span class="tag"></span>
+
+                            <h3>
+                                WORKSHOP
+                            </h3>
+
+                            <p>
+                                Learn emerging technologies
+                                with hands-on experience.
+                            </p>
+
+                            <div class="meta">
+                                <span>Team of 3</span>
+                                <span>5 hrs</span>
+                            </div>
+
+                            <a href="{{ url_for('form') }}"
+                                class="register-btn">
+
+                                <span>
+                                    Register Now
+                                </span>
+
+                                <i>↗</i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCHEDULE
+        ================================================== -->
+
+        <section id="schedule"
+            class="section-pad">
+
+            <div class="wrap">
+
+                <div class="section-head reveal">
+
+                    <p class="eyebrow">
+                        The trajectory
+                    </p>
+
+                    <h2>
+                        Two days, mapped out.
+                    </h2>
+
+                    <p>
+                        This is a real sequence, so we're numbering it
+                        like one. Full room assignments go out with your pass.
+                    </p>
+
+                </div>
+
+
+                <!-- Day Tabs -->
+                <div class="day-tabs reveal">
+
+                    <button class="day-tab active"
+                        data-day="1">
+                        Day 1 · Fri
+                    </button>
+
+                    <button class="day-tab"
+                        data-day="2">
+                        Day 2 · Sat
+                    </button>
+
+                </div>
+
+
+                <!-- ================= DAY 1 ================= -->
+
+                <div class="timeline active reveal"
+                    data-day="1">
+
+
+                    <!-- Opening -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            09:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                Opening Ceremony
+                                <span class="t-tag c-relay">
+                                    MPH
+                                </span>
+                            </h4>
+
+                            <p>
+                                Ceremonial Inauguration
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Hackathon -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            10:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                Hackathon
+                                <span class="t-tag c-relay">
+                                    LAB 1
+                                </span>
+                            </h4>
+
+                            <p>
+                                Theme reveal for the 24-hour
+                                flagship hackathon.
+                                Clock starts at 10:20.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Treasure Hunt -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            13:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                Treasure Hunt
+                                <span class="t-tag c-relay">
+                                    Ground
+                                </span>
+                            </h4>
+
+                            <p>
+                                Connects the dots to claim the spots.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Lunch -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            15:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                Lunch
+                                <span class="t-tag c-relay">
+                                    Cafeteria
+                                </span>
+                            </h4>
+
+                            <p>
+                                Good food, good mood.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= DAY 2 ================= -->
+
+                <div class="timeline"
+                    data-day="2">
+
+
+                    <!-- E Sport -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            10:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                E Sport
+                                <span class="t-tag c-core">
+                                    LAB 2
+                                </span>
+                            </h4>
+
+                            <p>
+                                Both run in parallel across the east labs.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CTF -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            11:30
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                CTF
+                                <span class="t-tag c-circuit">
+                                    LAB 5
+                                </span>
+                            </h4>
+
+                            <p>
+                                Hack hunt, capture win.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Workshop -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            13:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                Workshop
+                                <span class="t-tag c-core">
+                                    LT 1
+                                </span>
+                            </h4>
+
+                            <p>
+                                Learn, Build and Innovate.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Social -->
+                    <div class="t-row">
+
+                        <div class="t-time">
+                            15:00
+                        </div>
+
+                        <div class="t-line"></div>
+
+                        <div class="t-body">
+
+                            <h4>
+                                Nirvana Social
+                                <span class="t-tag c-core">
+                                    Ground
+                                </span>
+                            </h4>
+
+                            <p>
+                                Music, food trucks, and a very
+                                informal awards preview.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REGISTRATION GUIDE
+        ================================================== -->
+
+        <section id="register"
+            class="section-pad">
+
+            <div class="wrap">
+
+                <div class="section-head reveal">
+
+                    <p class="eyebrow">
+                        Registration
+                    </p>
+
+                    <h2>
+                        Four steps. No detours.
+                    </h2>
+
+                    <p>
+                        Registration closes March 7, 2027,
+                        or when a track fills — whichever comes first.
+                    </p>
+
+                </div>
+
+
+                <!-- Steps -->
+                <div class="steps reveal">
+
+
+                    <!-- Step 1 -->
+                    <div class="step">
+
+                        <span class="n">
+                            01
+                        </span>
+
+                        <h4>
+                            Pick your opportunity
+                        </h4>
+
+                        <p>
+                            Choose one or several tracks.
+                            Nothing locks you in until
+                            you submit an entry.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Step 2 -->
+                    <div class="step">
+
+                        <span class="n">
+                            02
+                        </span>
+
+                        <h4>
+                            Assemble your crew
+                        </h4>
+
+                        <p>
+                            Solo is fine for some events;
+                            most want a team of 2–4,
+                            campus or otherwise.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Step 3 -->
+                    <div class="step">
+
+                        <span class="n">
+                            03
+                        </span>
+
+                        <h4>
+                            Submit your entry
+                        </h4>
+
+                        <p>
+                            One form per event,
+                            five minutes each.
+                            Pay once for however many you join.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Step 4 -->
+                    <div class="step">
+
+                        <span class="n">
+                            04
+                        </span>
+
+                        <h4>
+                            Get your transit pass
+                        </h4>
+
+                        <p>
+                            Your badge, schedule, and room map
+                            arrive by email a week out.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAQ Heading -->
+                <div class="faq-tag"
+                    id="faq">
+
+                    <span class="faq-tag-icon">
+                        ?
+                    </span>
+
+                    <span>
+                        FAQ
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     FAQ
+                ================================================== -->
+
+                <div class="faq reveal">
+
+
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+
+                        <button class="faq-q">
+
+                            Do I need a full team before I register?
+
+                            <span class="plus">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-a">
+
+                            <p>
+                                No. You can register solo and find
+                                teammates at Ignition kickoff, or
+                                through the crew-matching channel
+                                we open two weeks before the fest.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+
+                        <button class="faq-q">
+
+                            Can I switch orbits after registering?
+
+                            <span class="plus">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-a">
+
+                            <p>
+                                Yes, up until the registration deadline.
+                                After that, you're locked into whichever
+                                events you've submitted entries for.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+
+                        <button class="faq-q">
+
+                            What if I've never competed in a hackathon before?
+
+                            <span class="plus">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-a">
+
+                            <p>
+                                Most tracks have at least one
+                                beginner-friendly event — start there.
+                                Office Hours mentors are around all
+                                three days for exactly this.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+
+                        <button class="faq-q">
+
+                            Is there a walk-in option on the day?
+
+                            <span class="plus">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-a">
+
+                            <p>
+                                Campus Passes are available at the door
+                                if a day hasn't sold out, but Crew Passes
+                                and event entries must be booked in advance.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         PREMIUM FOOTER
+    ====================================================== -->
+
+    <footer class="nirvana-footer">
+
+
+        <!-- Ambient Background -->
+        <div class="footer-glow footer-glow-1"></div>
+
+        <div class="footer-glow footer-glow-2"></div>
+
+        <div class="footer-grid"></div>
+
+
+        <div class="footer-container">
+
+
+            <!-- =================================================
+                 FOOTER CTA
+            ================================================== -->
+
+            <div class="footer-cta">
+
+
+                <div class="footer-cta-text">
+
+                    <span class="footer-eyebrow">
+                        READY TO ENTER?
+                    </span>
+
+                    <h2>
+                        ENTER
+                        <span>NIRVANA.</span>
+                    </h2>
+
+                    <p>
+                        Where technology meets imagination
+                        and ideas become reality.
+                    </p>
+
+                </div>
+
+
+                <a href="{{ url_for('form') }}"
+                    class="footer-cta-button">
+
+                    <span>
+                        Register Now
+                    </span>
+
+                    <i>
+                        ↗
+                    </i>
+
+                </a>
+
+            </div>
+
+
+            <!-- Divider -->
+            <div class="footer-divider"></div>
+
+
+            <!-- =================================================
+                 FOOTER MAIN
+            ================================================== -->
+
+            <div class="footer-main">
+
+
+                <!-- Brand -->
+                <div class="footer-brand">
+
+
+                    <a href="#home"
+                        class="footer-logo">
+
+                        <span class="footer-logo-mark">
+                            N
+                        </span>
+
+                        <span class="footer-logo-name">
+                            NIRVANA
+                        </span>
+
+                    </a>
+
+
+                    <p>
+                        A celebration of technology,
+                        innovation, creativity and the
+                        future.
+                    </p>
+
+
+                    <div class="footer-event-meta">
+
+                        <div>
+
+                            <span>
+                                DATE
+                            </span>
+
+                            <strong>
+                                14 OCT 2026
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                EDITION
+                            </span>
+
+                            <strong>
+                                2026
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Explore -->
+                <div class="footer-column">
+
+                    <h3>
+                        EXPLORE
+                    </h3>
+
+                    <a href="#home">
+                        Home
+                    </a>
+
+                    <a href="#events">
+                        Events
+                    </a>
+
+                    <a href="#schedule">
+                        Schedule
+                    </a>
+
+                    <a href="#register">
+                        Guide
+                    </a>
+
+                    <a href="#faq">
+                        FAQ
+                    </a>
+
+                </div>
+
+
+                <!-- Events -->
+                <div class="footer-column">
+
+                    <h3>
+                        EVENTS
+                    </h3>
+
+                    <a href="#events">
+                        Hackathon
+                    </a>
+
+                    <a href="#events">
+                        Capture the Flag
+                    </a>
+
+                    <a href="#events">
+                        Treasure Hunt
+                    </a>
+
+                    <a href="#events">
+                        E Sport
+                    </a>
+
+                    <a href="#events">
+                        Workshop
+                    </a>
+
+                </div>
+
+
+                <!-- Contact -->
+                <div class="footer-column footer-contact">
+
+                    <h3>
+                        CONNECT
+                    </h3>
+
+
+                    <a href="mailto:nirvana@example.com">
+                        nirvana@example.com
+                    </a>
+
+
+                    <a href="tel:+919999999999">
+                        +91 99999 99999
+                    </a>
+
+
+                    <p>
+                        Haldwani, Uttarakhand
+                        <br>
+                        India
+                    </p>
+
+
+                    <!-- Socials -->
+                    <div class="footer-socials">
+
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/919999999999"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="WhatsApp">
+
+                            <i class="fa-brands fa-whatsapp"></i>
+
+                        </a>
+
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn">
+
+                            <i class="fa-brands fa-linkedin-in"></i>
+
+                        </a>
+
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="GitHub">
+
+                            <i class="fa-brands fa-github"></i>
+
+                        </a>
+
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER BOTTOM
+            ================================================== -->
+
+            <div class="footer-bottom">
+
+
+                <p>
+                    © 2026 NIRVANA.
+                    ALL RIGHTS RESERVED.
+                </p>
+
+
+                <div class="footer-bottom-links">
+
+                    <a href="#">
+                        Privacy
+                    </a>
+
+                    <span>
+                        •
+                    </span>
+
+                    <a href="#">
+                        Terms
+                    </a>
+
+                    <span>
+                        •
+                    </span>
+
+                    <a href="#home">
+                        Back to top ↑
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- Main JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- Hero JS -->
+    <script src="{{ url_for('static', filename='hero.js') }}"></script>
+
+    <!-- Three.js Hero -->
+    <script type="module"
+        src="{{ url_for('static', filename='hero-3d.js') }}">
+    </script>
+
+
+</body>
+
+</html>
+
